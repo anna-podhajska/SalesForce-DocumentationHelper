@@ -1,0 +1,45 @@
+/**
+ * Created by Anna on 30/09/2018.
+ */
+/*.THIS .custWrapper{*/
+    /*background-color: white;*/
+    /*min-height: 300px;*/
+/*}*/
+
+.THIS.custWrapper {
+    background-color: white;
+}
+.THIS .custWrapperInner {
+    /*width: 75%;*/
+    margin: 0 auto;
+}
+.THIS table, .THIS th, .THIS td {
+    border: 1px solid darkgray;
+    /*margin: 0 auto;*/
+}
+.THIS table {
+    border-collapse: collapse;
+    /*width: 17cm;*/
+}
+.THIS th {
+    color: #FFFFFF;
+    background-color: #00b0f0;
+    padding: .25rem;
+}
+.THIS td {
+    padding: .25rem;
+}
+
+.THIS .custInputPagePush {
+    padding-top: 8rem;
+}
+.THIS .custFooter {
+    background-color: white;
+    min-height: 5rem;
+}
+.THIS .custFooterText {
+    padding-top: 8rem;
+    margin: 0 auto;
+    font-variant: all-petite-caps;
+    color: gray;
+}

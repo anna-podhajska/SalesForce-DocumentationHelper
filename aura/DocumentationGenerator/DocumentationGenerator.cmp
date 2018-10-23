@@ -1,0 +1,92 @@
+<!--
+ @Description:  Personal Project -> Improving generating documentation for Sales Force objects. Contact Ania for ideas on improvement at podhajskaa@gmail.com.
+ @Created by AniaPodhajska @DC on 30/09/2018.
+ @History 30/10/18 AniaP initial version.
+ @History 6/10/18 AniaP added css.
+ @History 22/10/18 AniaP refactored and added handling picklist values.
+ -->
+
+<aura:component implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes"
+                access="public"
+                description="Documentation helper - test component to generate a table with information about objects"
+                controller="DocumentationGeneratorCC">
+
+    <!--Attributes-->
+    <aura:attribute type="String" name="objToDescribeApi" description="api of an object to be described" required="false" />
+    <aura:attribute type="String" name="receivedDescriptionString" description="object description received" required="false" />
+    <aura:attribute type="List" name="receivedDescription" description="object description received" required="false" />
+    <aura:attribute type="List" name="receivedDescriptionFieldsList" description="list of object fields description received" required="false" />
+
+    <aura:attribute type="Boolean" name="isRenderedInputPage" description="defines if input or output page is rendered" default="true"/>
+
+    <!-- Handlers and events -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+
+    <div class="custWrapper">
+
+        <aura:if isTrue="{!v.isRenderedInputPage}">  <!--Input-->
+
+            <div class="custWrapperInner custInputPagePush slds-grid slds-wrap slds-grid_align-center">
+                <div class="slds-col slds-size_7-of-12 slds-p-top_large">
+                    <div class="slds-item_label">Type API name of an object (for example hearing__c)</div>
+                    <lightning:input name="apiname"
+                                     label=""
+                                     value="{!v.objToDescribeApi}"  />
+                    <lightning:button type="button" onclick="{!c.handleGetDescription}" label="Show me the table" />
+                </div>
+            </div>
+            <div class="custInputPagePush"></div>
+
+            <aura:set attribute="else">  <!--Output-->
+
+                <div class="custWrapperInner slds-grid slds-wrap slds-grid_align-center">
+
+                    <div class="slds-col slds-size_7-of-12 slds-m-vertical_medium">
+                        <lightning:button onclick="{!c.handleShowInputPage}" variant="neutral" label="select another object" />
+                    </div>
+
+                    <div class="slds-col slds-size_7-of-12 slds-m-top_medium">
+
+                        <div class="slds-page-header__detail slds-p-bottom_medium">Information about the Sales Force object and fields</div>
+                        <div><b>Object Name: </b> {!v.receivedDescription[0].Name}</div>
+                        <div><b>Object API: </b> {!v.receivedDescription[0].ApiName}</div>
+                        <div class="slds-p-bottom_medium"><b>Custom Fields: </b></div>
+
+                        <table>
+                            <tr>
+                                <th>Name</th>
+                                <th>API</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                            </tr>
+                            <aura:iteration items="{!v.receivedDescriptionFieldsList}" var="field" indexVar="i" >
+                                <tr>
+                                    <td>{!field.Name}</td>
+                                    <td>{!field.ApiName}</td>
+                                    <td>{!field.Description}</td>
+                                    <td>{!field.Type} <br/> {!field.TypeInfo} </td>
+                                </tr>
+                            </aura:iteration>
+                        </table>
+
+                    </div>
+                </div>
+
+            </aura:set>
+
+        </aura:if>
+
+
+        <!--footer-->
+        <div class="custFooter custInputPagePush slds-grid slds-wrap slds-grid_align-center slds-text-align_center">
+            <div class="slds-col slds-size_7-of-12 custFooterText">
+                    <h5 class="">Helper component supporting documentation</h5>
+                    <h5 class="slds-p-bottom__large slds-p-bottom--large">Contact AniaP @DC for ideas on improvement</h5>
+            </div>
+        </div>
+
+
+    </div> <!--wrapper end-->
+
+</aura:component>
