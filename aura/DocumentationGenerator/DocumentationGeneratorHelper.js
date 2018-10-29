@@ -48,11 +48,13 @@
             response.Fields[i].Type = response.Fields[i].Type.charAt(0).toUpperCase() + response.Fields[i].Type.substr(1).toLowerCase();
 
         }
-
+        console.log(response);
         //set aura attribute with whole response:
         component.set("v.receivedDescription", resp);
         //set aura attribute with array of fields:
         component.set("v.receivedDescriptionFieldsList", resp.Fields);
+        //set aura attribute with array of record types:
+        component.set("v.receivedRecordTypes", resp.RecordTypes)
 
     },
 

@@ -1,0 +1,18 @@
+<!--
+ - Created by Anna on 29/10/2018.
+ -->
+
+<aura:documentation>
+    <aura:description>Documentation for Documentation Helper
+        <div>Author Ania Podhajska @DC, 2018</div>
+        <ul>
+            <li>Component created to improve creating Solution Workbooks Documentation including Objects description in the form of table.</li>
+            <li>It can be used also as universal object lookup.</li>
+            <li>Created as part of personal training in Apex.</li>
+        </ul>
+
+    </aura:description>
+    <aura:example name="DocumentationGenerator" ref="c:DocumentationGenerator" label="DocumentationGenerator">
+        Example for DocumentationGenerator
+    </aura:example>
+</aura:documentation>

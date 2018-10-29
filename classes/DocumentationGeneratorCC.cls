@@ -21,11 +21,18 @@ public class DocumentationGeneratorCC {
 
                 //get object description
                 ObjectDescription describedObject = new ObjectDescription();
+
                 describedObject.Name = result.getLabel();
                 describedObject.ApiName = result.getName();
 
                 List<FieldDescription> fieldsList = new List<FieldDescription>();
                 describedObject.Fields = fieldsList;
+
+                Map<String, RecordTypeInfo> recordTypes = result.SObjectType.getDescribe().getRecordTypeInfosByName();
+                describedObject.RecordTypes = new List<String>();
+                for(RecordTypeInfo rec : recordTypes.values()){
+                    describedObject.RecordTypes.add(rec.getName());
+                }
 
                 //get fields description
                 for(SObjectField field : result.fields.getMap().values()) {
@@ -62,6 +69,7 @@ public class DocumentationGeneratorCC {
         public String Name;
         public String ApiName;
         List<FieldDescription> Fields;
+        List<String> RecordTypes;
     }
     public class FieldDescription {
         public String Name;

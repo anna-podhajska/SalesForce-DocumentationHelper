@@ -12,10 +12,11 @@
                 controller="DocumentationGeneratorCC">
 
     <!--Attributes-->
-    <aura:attribute type="String" name="objToDescribeApi" description="api of an object to be described" required="false" />
-    <aura:attribute type="String" name="receivedDescriptionString" description="object description received" required="false" />
-    <aura:attribute type="List" name="receivedDescription" description="object description received" required="false" />
-    <aura:attribute type="List" name="receivedDescriptionFieldsList" description="list of object fields description received" required="false" />
+    <aura:attribute type="String" name="objToDescribeApi" description="api of an object to be described" />
+    <aura:attribute type="String" name="receivedDescriptionString" description="object description received" />
+    <aura:attribute type="List" name="receivedDescription" description="object description received" />
+    <aura:attribute type="List" name="receivedDescriptionFieldsList" description="list of object fields description received" />
+    <aura:attribute type="List" name="receivedRecordTypes" description="list of object record types for the object" />
 
     <aura:attribute type="Boolean" name="isRenderedInputPage" description="defines if input or output page is rendered" default="true"/>
 
@@ -51,6 +52,13 @@
                         <div class="slds-page-header__detail slds-p-bottom_medium">Information about the Sales Force object and fields</div>
                         <div><b>Object Name: </b> {!v.receivedDescription[0].Name}</div>
                         <div><b>Object API: </b> {!v.receivedDescription[0].ApiName}</div>
+                        <div><b>Object Record Types: </b>
+                            <aura:iteration var="rec" indexVar="r" items="{!v.receivedRecordTypes}">
+                                {! rec + ', '}
+                            </aura:iteration>
+                        </div>
+
+
                         <div class="slds-p-bottom_medium"><b>Custom Fields: </b></div>
 
                         <table>
