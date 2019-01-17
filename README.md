@@ -1,7 +1,8 @@
 # Sales Force helper component
 
 - component to support creating documentation for Sales Force objects
-- displays onject information, fields and picklist values in the form of table
+- displays object information, fields and picklist values in the form of table
+- utilizes SF api and metadata
 
 ## Install / Running
 
